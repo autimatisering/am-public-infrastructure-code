@@ -22,6 +22,6 @@ apt-get install ufw -y
 ufw allow 22/tcp
 ufw allow 80/tcp
 ufw allow 443/tcp
-ufw enable
+ufw --force enable
 
 echo "the script is done"
