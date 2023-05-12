@@ -1,6 +1,7 @@
 #!/bin/sh
 # Licensed under the EUPL
 # run as root
+DEBIAN_FRONTEND=noninteractive
 
 # update system
 echo "upgrading packages"
@@ -22,6 +23,12 @@ apt-get install ufw -y
 ufw allow 22/tcp
 ufw allow 80/tcp
 ufw allow 443/tcp
+ufw deny 3306/tcp
 ufw --force enable
+
+# install mariadb
+apt-get install mariadb-server -y
+echo "to set up mariadb run \`mariadb-secure-installation\`"
+echo "and edit the bind address afterward"
 
 echo "the script is done"
